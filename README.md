@@ -31,7 +31,7 @@
         <tr style="border: none; background: transparent;">
           <td align="center" style="border: none; padding: 0 0 8px 0;">
             <p align="center" style="margin: 0; font-size: 14px; font-weight: bold; color: #8b949e; white-space: nowrap;">
-              🛡️(Pb info: Nicoleta_cpp)
+              🛡️(Pb info: Nicoleta_cpp  > 304 solved)
             </p>
           </td>
         </tr>
