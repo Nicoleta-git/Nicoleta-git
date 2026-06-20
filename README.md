@@ -92,6 +92,12 @@
 </p>
 
 ---
+## ★ Certificates & Acheivements
+<img width="144" height="144" alt="it-specialist-java (1)" src="https://github.com/user-attachments/assets/e8ae6eb3-06c4-46df-ae8c-a0df1ea31b9e" />
+<img width="144" height="144" alt="it-specialist-databases (1)" src="https://github.com/user-attachments/assets/ecd27e0a-194b-4199-b84a-d821e4c2d4c7" />
+<img width="144" height="144" alt="it-specialist-networking (1)" src="https://github.com/user-attachments/assets/910d1cd4-5a27-463a-a829-a3a43c2b7f74" />
+
+---
 
 ## 🎯 Just for Fun
 <p align="center">
