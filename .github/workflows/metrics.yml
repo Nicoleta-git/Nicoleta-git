@@ -1,4 +1,4 @@
-# Visit https://github.com/lowlighter/metrics#-documentation for full reference 
+# Visit https://github.com/lowlighter/metrics#-documentation for full reference
 name: Metrics
 on:
   # Schedule updates (each hour)
@@ -29,3 +29,8 @@ jobs:
           template: classic
           base: header, activity, community, repositories, metadata
           config_timezone: Europe/Chisinau
+          plugin_leetcode: yes
+          plugin_leetcode_limit_recent: 2
+          plugin_leetcode_limit_skills: 10
+          plugin_leetcode_sections: solved
+          plugin_leetcode_user: Nicoleta_cpp
