@@ -28,3 +28,4 @@ jobs:
           user: Nicoleta-git
           template: classic
           base: header, activity, community, repositories, metadata
+          config_timezone: Europe/Chisinau
