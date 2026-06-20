@@ -10,7 +10,6 @@
 
 <table width="100%" border="0" cellpadding="10" cellspacing="0">
   <tr>
-    <!-- Left Column: Bio Text (Vertically Centered with valign="middle") -->
     <td width="58%" valign="middle" style="padding-right: 20px; line-height: 1.6;">
       <p align="left" style="font-size: 1.2em; margin-bottom: 15px;">
         Hey there! 👋 I'm <strong>Nicoleta</strong>, a driven developer and creator who thrives at the intersection of technical logic and creative design.
@@ -25,9 +24,23 @@
       <p align="left" style="margin: 6px 0;">🌱 <strong>Currently learning:</strong> PHP development and architecting robust Java applications.</p>
       <p align="left" style="margin: 6px 0;">💬 <strong>Ask me about:</strong> Java programming, C# object-oriented design, or merging UI/UX with clean code.</p>
     </td>
-    <!-- Right Column: Metrics Graphic -->
     <td width="42%" valign="middle" align="center">
       <img src="github-metrics.svg" width="100%" alt="GitHub Metrics" style="max-width: 380px; display: block;" />
+      <br />
+      <table border="0" cellpadding="0" cellspacing="0" style="border: none; background: transparent; margin: 0 auto;">
+        <tr style="border: none; background: transparent;">
+          <td align="center" style="border: none; padding: 0 0 8px 0;">
+            <p align="center" style="margin: 0; font-size: 14px; font-weight: bold; color: #8b949e; white-space: nowrap;">
+              🛡️(Pb info: Nicoleta_cpp)
+            </p>
+          </td>
+        </tr>
+        <tr style="border: none; background: transparent;">
+          <td align="center" style="border: none; padding: 0;">
+            <img src="https://github.com/user-attachments/assets/ca0120b5-7ed7-4535-afae-2e784cf4d232" width="180" alt="Pb info stats" style="border-radius: 6px; display: block; margin: 0 auto;" />
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>
