@@ -1,5 +1,13 @@
+<!-- Moving text -->
+<p align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=25F71D&vCenter=true&width=435&lines=Currently+debugging+life" alt="Typing SVG" />
+  </a>
+</p>
+<!-- Snake -->
 <img src="https://raw.githubusercontent.com/Nicoleta-git/Nicoleta-git/output/snake.svg" alt="Snake animation" />
 
+<!-- Stats -->
 <p align="center">
   <img src="https://github-readme-stats.shion.dev/api?username=Nicoleta-git&theme=dark&hide_bg=true&hide_border=true&include_all_commits=true&count_private=true" height="165" />
   <img src="https://streak-stats.demolab.com/?user=Nicoleta-git&theme=dark&hide_bg=true&hide_border=true" height="165" />
