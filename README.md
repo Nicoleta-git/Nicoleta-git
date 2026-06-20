@@ -8,20 +8,26 @@
 
 ## 🛠️ About Me
 
-<table width="100%">
+<table width="100%" border="0" cellpadding="10" cellspacing="0">
   <tr>
-    <td width="60%" valign="top">
-      <p>Hey there! 👋 I'm <strong>Nicoleta</strong></p>
-      <p>For me, programming isn't just about writing code—it's about the fulfillment of building something impactful and contributing to meaningful solutions. I pair an analytical mindset with a strong creative foundation, allowing me to design and develop software that is both structurally sound and visually intuitive.</p>
-      <p>Outside of coding, I am deeply committed to continuous personal growth. Whether I'm running, optimizing my systems, reading self-help books, or studying psychology to better understand human connection and product strategy, I approach every day with one goal: to outgrow who I was yesterday.</p>
-      <ul>
-        <li>🚀 <strong>I’m currently working on:</strong> Building a robust, production-ready project portfolio.</li>
-        <li>🌱 <strong>I’m currently learning:</strong> PHP development and architecting robust Java applications.</li>
-        <li>💬 <strong>Ask me about:</strong> Java programming, C# object-oriented design, or merging UI/UX with clean code.</li>
-      </ul>
+    <!-- Left Column: Bio Text (Vertically Centered with valign="middle") -->
+    <td width="58%" valign="middle" style="padding-right: 20px; line-height: 1.6;">
+      <p align="left" style="font-size: 1.2em; margin-bottom: 15px;">
+        Hey there! 👋 I'm <strong>Nicoleta</strong>, a driven developer and creator who thrives at the intersection of technical logic and creative design.
+      </p>
+      <p align="left" style="margin-bottom: 15px;">
+        For me, programming isn't just about writing code—it's about the fulfillment of building something impactful and contributing to meaningful solutions. I pair an analytical mindset with a strong creative foundation (I love to draw!), allowing me to design and develop software that is both structurally sound and visually intuitive.
+      </p>
+      <p align="left" style="margin-bottom: 25px;">
+        Outside of coding, I am deeply committed to continuous personal growth. Whether I'm running, optimizing my systems, reading self-help books, or studying psychology to better understand human connection and product strategy, I approach every day with one goal: to outgrow who I was yesterday.
+      </p>
+      <p align="left" style="margin: 6px 0;">🚀 <strong>Currently working on:</strong> Building a robust, production-ready project portfolio.</p>
+      <p align="left" style="margin: 6px 0;">🌱 <strong>Currently learning:</strong> PHP development and architecting robust Java applications.</p>
+      <p align="left" style="margin: 6px 0;">💬 <strong>Ask me about:</strong> Java programming, C# object-oriented design, or merging UI/UX with clean code.</p>
     </td>
-    <td width="40%" valign="center" align="center">
-      <img src="github-metrics.svg" width="100%" alt="GitHub Metrics" />
+    <!-- Right Column: Metrics Graphic -->
+    <td width="42%" valign="middle" align="center">
+      <img src="github-metrics.svg" width="100%" alt="GitHub Metrics" style="max-width: 380px; display: block;" />
     </td>
   </tr>
 </table>
