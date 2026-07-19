@@ -1,0 +1,106 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated terminal cycling through whoami, tech-stack.txt and a real project listing for Nicoleta.">
+  <defs>
+    <clipPath id="tickerClip"><rect x="16" y="648" width="1168" height="40"/></clipPath>
+    <clipPath id="typeA"><rect x="72" y="104" height="32" width="0">
+      <animate attributeName="width" calcMode="discrete" values="0;24;48;72;72" keyTimes="0;0.04;0.08;0.12;1" dur="18s" repeatCount="indefinite"/>
+    </rect></clipPath>
+    <clipPath id="typeB"><rect x="72" y="104" height="32" width="0">
+      <animate attributeName="width" calcMode="discrete" values="0;60;120;180;228;228" keyTimes="0;0.365;0.372;0.379;0.386;1" dur="18s" repeatCount="indefinite"/>
+    </rect></clipPath>
+    <clipPath id="typeC"><rect x="72" y="104" height="32" width="0">
+      <animate attributeName="width" calcMode="discrete" values="0;54;108;162;216;216" keyTimes="0;0.705;0.712;0.719;0.726;1" dur="18s" repeatCount="indefinite"/>
+    </rect></clipPath>
+  </defs>
+
+  <!-- window chrome -->
+  <rect x="8" y="8" width="1184" height="684" rx="16" fill="#0d1117" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <path d="M 24 8 h 1152 a 16 16 0 0 1 16 16 v 32 h -1184 v -32 a 16 16 0 0 1 16 -16 z" fill="#161b22"/>
+  <path d="M 8 56 L 1192 56" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="46" cy="32" r="8" fill="#ff5f56"/>
+  <circle cx="76" cy="32" r="8" fill="#ffbd2e"/>
+  <circle cx="106" cy="32" r="8" fill="#27c93f"/>
+  <text x="600" y="38" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="15" fill="#71717a">nicoleta@dev &#8212; portfolio</text>
+
+  <!-- Screen A: whoami -->
+  <g>
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.30;0.32;1" dur="18s" repeatCount="indefinite"/>
+    <text x="40" y="128" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#22c55e">$</text>
+    <g clip-path="url(#typeA)">
+      <text x="72" y="128" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#F7F6FC">whoami</text>
+    </g>
+    <rect y="108" width="10" height="26" fill="#a1a1aa">
+      <animate attributeName="x" calcMode="discrete" values="72;96;120;144;144" keyTimes="0;0.04;0.08;0.12;1" dur="18s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.15;1;0.15;1;0;0" keyTimes="0;0.03;0.06;0.09;0.12;0.15;1" dur="18s" repeatCount="indefinite"/>
+    </rect>
+    <g font-family="Consolas, 'Courier New', monospace" font-size="20">
+      <text x="40" y="192" font-weight="700" fill="#38bdf8" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.14" dur="18s" repeatCount="indefinite"/>Nicoleta</text>
+      <text x="40" y="234" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.16" dur="18s" repeatCount="indefinite"/>Developer &amp; CS student &#8212; backend, desktop &amp; web</text>
+      <text x="40" y="276" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.18" dur="18s" repeatCount="indefinite"/>Focus: Java &amp; Spring Boot, C#/.NET, C++, learning PHP</text>
+      <text x="40" y="318" fill="#71717a" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.20" dur="18s" repeatCount="indefinite"/>Currently: building a production-ready project portfolio</text>
+    </g>
+  </g>
+
+  <!-- Screen B: cat tech-stack.txt -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34;0.36;0.62;0.64;1" dur="18s" repeatCount="indefinite"/>
+    <text x="40" y="128" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#22c55e">$</text>
+    <g clip-path="url(#typeB)">
+      <text x="72" y="128" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#F7F6FC">cat tech-stack.txt</text>
+    </g>
+    <rect y="108" width="10" height="26" fill="#a1a1aa">
+      <animate attributeName="x" calcMode="discrete" values="72;132;192;252;300;300" keyTimes="0;0.365;0.372;0.379;0.386;1" dur="18s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;0.15;1;0.15;1;0;0" keyTimes="0;0.355;0.365;0.375;0.385;0.395;0.405;0.42;1" dur="18s" repeatCount="indefinite"/>
+    </rect>
+    <g font-family="Consolas, 'Courier New', monospace" font-size="19">
+      <text x="40" y="188" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.41;0.413" dur="18s" repeatCount="indefinite"/>Languages&#160;&#160; <tspan fill="#F7F6FC">Java &#183; C# &#183; C++ &#183; PHP &#183; JavaScript</tspan></text>
+      <text x="40" y="230" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.42;0.423" dur="18s" repeatCount="indefinite"/>Backend&#160;&#160;&#160;&#160;&#160; <tspan fill="#F7F6FC">Spring Boot &#183; REST APIs &#183; MongoDB &#183; SQL Server</tspan></text>
+      <text x="40" y="272" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.43;0.433" dur="18s" repeatCount="indefinite"/>Frontend&#160;&#160;&#160;&#160;&#160; <tspan fill="#F7F6FC">React &#183; Tailwind CSS &#183; HTML5 &#183; CSS3</tspan></text>
+      <text x="40" y="314" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.44;0.443" dur="18s" repeatCount="indefinite"/>Desktop&#160;&#160;&#160;&#160;&#160;&#160; <tspan fill="#F7F6FC">WPF &#183; WinForms &#183; C#/.NET</tspan></text>
+      <text x="40" y="356" fill="#a1a1aa" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.45;0.453" dur="18s" repeatCount="indefinite"/>Design&#160;&#160;&#160;&#160;&#160;&#160;&#160; <tspan fill="#F7F6FC">Figma &#183; Photoshop &#183; Illustrator &#183; Blender</tspan></text>
+    </g>
+  </g>
+
+  <!-- Screen C: ls -la ~/projects -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.68;0.70;0.96;0.98;1" dur="18s" repeatCount="indefinite"/>
+    <text x="40" y="128" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#22c55e">$</text>
+    <g clip-path="url(#typeC)">
+      <text x="72" y="128" font-family="Consolas, 'Courier New', monospace" font-size="20" fill="#F7F6FC">ls ~/projects</text>
+    </g>
+    <rect y="108" width="10" height="26" fill="#a1a1aa">
+      <animate attributeName="x" calcMode="discrete" values="72;126;180;234;288;288" keyTimes="0;0.705;0.712;0.719;0.726;1" dur="18s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;0.15;1;0.15;1;0;0" keyTimes="0;0.695;0.705;0.715;0.725;0.735;0.745;0.76;1" dur="18s" repeatCount="indefinite"/>
+    </rect>
+    <g font-family="Consolas, 'Courier New', monospace" font-size="19">
+      <text x="40" y="188" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.75;0.753" dur="18s" repeatCount="indefinite"/><tspan fill="#38bdf8" font-weight="700">BibliotecaCEITI-WPF</tspan><tspan fill="#71717a">      WPF &#183; C# &#183; .NET 8 &#183; Gemini AI</tspan></text>
+      <text x="40" y="230" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.76;0.763" dur="18s" repeatCount="indefinite"/><tspan fill="#38bdf8" font-weight="700">spring-boot-ollama-keycloak</tspan><tspan fill="#71717a">  Spring Boot &#183; Ollama &#183; Keycloak</tspan></text>
+      <text x="40" y="272" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.77;0.773" dur="18s" repeatCount="indefinite"/><tspan fill="#38bdf8" font-weight="700">RestApi_MongoDB</tspan><tspan fill="#71717a">           Spring Boot &#183; MongoDB REST API</tspan></text>
+      <text x="40" y="314" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.78;0.783" dur="18s" repeatCount="indefinite"/><tspan fill="#38bdf8" font-weight="700">Learning.Cpp_Algoritmi</tspan><tspan fill="#71717a">    C++ &#183; algorithms &amp; data structures</tspan></text>
+      <text x="40" y="368" fill="#71717a" opacity="0">
+        <animate attributeName="opacity" calcMode="discrete" values="0;0;1" keyTimes="0;0.80;0.803" dur="18s" repeatCount="indefinite"/>&#8230; and more on my profile</text>
+    </g>
+  </g>
+
+  <!-- ticker -->
+  <path d="M 8 636 L 1192 636" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <g clip-path="url(#tickerClip)">
+    <g font-family="Consolas, 'Courier New', monospace" font-size="15" fill="#71717a">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-1520 0" dur="40s" repeatCount="indefinite"/>
+      <text x="24" y="674"><tspan fill="#8b5cf6">Java</tspan> &#183; C# &#183; C++ &#183; <tspan fill="#8b5cf6">PHP</tspan> &#183; JavaScript &#183; <tspan fill="#8b5cf6">Spring Boot</tspan> &#183; React &#183; Tailwind CSS &#183; <tspan fill="#8b5cf6">WPF</tspan> &#183; WinForms &#183; MySQL &#183; SQL Server &#183; <tspan fill="#8b5cf6">Git</tspan> &#183; Figma &#183; Photoshop &#183; Blender &#8230;</text>
+      <text x="1544" y="674"><tspan fill="#8b5cf6">Java</tspan> &#183; C# &#183; C++ &#183; <tspan fill="#8b5cf6">PHP</tspan> &#183; JavaScript &#183; <tspan fill="#8b5cf6">Spring Boot</tspan> &#183; React &#183; Tailwind CSS &#183; <tspan fill="#8b5cf6">WPF</tspan> &#183; WinForms &#183; MySQL &#183; SQL Server &#183; <tspan fill="#8b5cf6">Git</tspan> &#183; Figma &#183; Photoshop &#183; Blender &#8230;</text>
+    </g>
+  </g>
+</svg>
