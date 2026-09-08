@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicoleta-git@portfolio:~$</title>
+<meta name="description" content="Interactive terminal portfolio — Nicoleta Titei, Java / Spring Boot developer.">
+<style>
+  :root{
+    --bg:#0d1117;
+    --term-bg:#0a0e13;
+    --chrome:#161b22;
+    --border:#30363d;
+    --green:#3ee06f;
+    --green-dim:#2a9d4f;
+    --cyan:#56d3f5;
+    --yellow:#e3b341;
+    --magenta:#d2a8ff;
+    --white:#c9d1d9;
+    --grey:#8b949e;
+    --red:#ff7b72;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    padding:16px;
+    font-family:"SF Mono","Cascadia Code",Consolas,"Courier New",monospace;
+  }
+  .window{
+    width:100%; max-width:1000px; height:min(85vh,720px);
+    background:var(--term-bg);
+    border:1px solid var(--border);
+    border-radius:10px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+  .titlebar{
+    background:var(--chrome);
+    border-bottom:1px solid var(--border);
+    padding:10px 14px;
+    display:flex; align-items:center; gap:10px;
+    flex-shrink:0;
+  }
+  .dots{display:flex; gap:7px}
+  .dot{width:12px;height:12px;border-radius:50%}
+  .dot.r{background:#ff5f56}.dot.y{background:#ffbd2e}.dot.g{background:#27c93f}
+  .title{color:var(--green); font-size:14px; font-weight:600}
+  .screen{
+    flex:1; overflow-y:auto; padding:16px;
+    font-size:14px; line-height:1.55; color:var(--white);
+    white-space:pre-wrap; word-break:break-word;
+  }
+  .screen::-webkit-scrollbar{width:10px}
+  .screen::-webkit-scrollbar-track{background:var(--term-bg)}
+  .screen::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px}
+  /* the input line is the whole point — make it impossible to miss */
+  .inputline{
+    display:flex; align-items:center; gap:8px;
+    padding:14px 16px;
+    border-top:1px solid var(--green-dim);
+    background:rgba(62,224,111,.06);
+    flex-shrink:0;
+    transition:background .2s, border-color .2s;
+  }
+  .inputline:focus-within{
+    background:rgba(62,224,111,.12);
+    border-top-color:var(--green);
+  }
+  .prompt{color:var(--green); font-weight:700; flex-shrink:0}
+  #cmd{
+    flex:1; background:transparent; border:none; outline:none;
+    color:var(--green); font:inherit; font-size:14px; caret-color:var(--green);
+  }
+  #cmd::placeholder{color:var(--green-dim); opacity:.9}
+  /* fat block caret shown while the field is empty — a bare placeholder
+     reads as decoration, a blinking block reads as "this is waiting for you" */
+  .caret{
+    width:9px; height:17px; background:var(--green); flex-shrink:0;
+    animation:blink 1.1s step-end infinite;
+  }
+  .caret.hidden{display:none}
+  .hint{
+    color:var(--grey); font-size:12px; flex-shrink:0;
+    padding-left:10px; border-left:1px solid var(--border);
+  }
+  .hint b{color:var(--green-dim); font-weight:600}
+  @media(max-width:640px){ .hint{display:none} }
+  .g{color:var(--green)} .c{color:var(--cyan)} .y{color:var(--yellow)}
+  .m{color:var(--magenta)} .d{color:var(--grey)} .r{color:var(--red)}
+  .w{color:var(--white)}
+  a{color:var(--cyan); text-decoration:none; border-bottom:1px dotted var(--cyan)}
+  a:hover{color:var(--green); border-color:var(--green)}
+  .cursor{
+    display:inline-block; width:8px; height:16px;
+    background:var(--green); vertical-align:text-bottom;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0}}
+  @media(max-width:640px){
+    .screen,#cmd{font-size:12px}
+    .window{height:92vh}
+  }
+</style>
+</head>
+<body>
+
+<div class="window" id="window">
+  <div class="titlebar">
+    <div class="dots"><i class="dot r"></i><i class="dot y"></i><i class="dot g"></i></div>
+    <div class="title">Nicoleta-git@portfolio:~$</div>
+  </div>
+  <div class="screen" id="screen"></div>
+  <div class="inputline">
+    <span class="prompt">Nicoleta-git:~$</span>
+    <i class="caret" id="caret" aria-hidden="true"></i>
+    <input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false"
+           autofocus aria-label="Type a command" placeholder="type a command here, then press Enter">
+    <span class="hint"><b>Tab</b> completes · <b>&#8593;</b> history</span>
+  </div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   EDIT EVERYTHING BELOW — this object is your whole portfolio.
+   Each key is a command. `desc` shows up in --help.
+   `out` is the text printed. HTML is allowed (links, colors).
+   Colour classes: g=green c=cyan y=yellow m=magenta d=grey r=red
+   ───────────────────────────────────────────────────────────── */
+const USER = "Nicoleta-git";
+
+const COMMANDS = {
+
+  "--profile": {
+    desc: "Display profile information",
+    out: `<span class="c">Name:</span>     Nicoleta Titei
+<span class="c">Role:</span>     Java / Spring Boot Developer
+<span class="c">Focus:</span>    Backend APIs, REST, PostgreSQL, Docker
+<span class="c">Location:</span> Chisinau, Moldova
+<span class="c">Status:</span>   <span class="g">Open to internships &amp; junior roles</span>
+
+Student developer building production-shaped backends: layered
+Spring Boot services, Flyway migrations, JWT auth, Swagger docs,
+and CI that actually runs. Currently learning React on the front.`
+  },
+
+  "--projects": {
+    desc: "List all projects",
+    out: `<span class="y">TyreVault</span> <span class="d">— autoservice-manager · in progress</span>
+   Tyre hotel &amp; workshop management for a car service in Chisinau.
+   <span class="c">Java 21 · Spring Boot · PostgreSQL · Flyway · Docker · CI</span>
+
+<span class="y">spring-boot-ollama-keycloak</span> <span class="d">— in progress</span>
+   Secured LLM gateway: Keycloak-authenticated API in front of Ollama.
+   <span class="c">Spring Boot · Spring AI · Keycloak OAuth2/JWT · Swagger</span>
+
+<span class="y">ScamHound</span> <span class="d">— in progress</span>
+   Scam / phishing message detector. POST /api/v1/sniff returns a verdict.
+   <span class="c">Spring Boot · REST · CodeQL · Dependabot · React front-end</span>
+
+<span class="y">RestApi_MongoDB</span> <span class="d">— complete</span>
+   REST API backed by MongoDB, containerised and documented in Postman.
+   <span class="c">Spring Boot · MongoDB · Docker · Postman</span>
+
+<span class="y">BibliotecaCEITI</span> <span class="d">— complete</span>
+   Library management system for my college library.
+   <span class="c">C# · WPF · .NET 8 · one-click installer + CI</span>
+
+<span class="d">Type</span> <span class="g">--contact</span> <span class="d">for links.</span>`
+  },
+
+  "--skills": {
+    desc: "Display technical skills",
+    out: `<span class="c">Languages</span>    Java, C#, C++, PHP, JavaScript, SQL
+<span class="c">Backend</span>      Spring Boot, Spring Security, Spring Data JPA, REST
+<span class="c">Databases</span>    PostgreSQL, MongoDB, MySQL, SQL Server, Flyway, Hibernate
+<span class="c">Frontend</span>     React <span class="d">(learning)</span>, TypeScript, Tailwind CSS, HTML/CSS
+<span class="c">Desktop</span>      WPF, WinForms, .NET
+<span class="c">Tools</span>        Git, Maven, Docker, Docker Compose, IntelliJ IDEA
+<span class="c">Testing</span>      JUnit 5, Mockito
+<span class="c">Docs / CI</span>    Swagger / OpenAPI, GitHub Actions
+<span class="c">Design</span>       Figma, Photoshop, Illustrator, Blender
+<span class="c">Concepts</span>     OOP, Design Patterns, Generics, Layered Architecture`
+  },
+
+  "--experience": {
+    desc: "Show work experience",
+    out: `<span class="y">Open source contributor</span> <span class="d">— stacktale</span>
+   Reproduced and fixed issue #124, then opened a pull request
+   following the project's contribution guidelines. My first one.
+
+<span class="y">Self-directed projects</span>
+   Designed and shipped full backends end to end: schema design,
+   migrations, auth, API docs, containerisation, CI pipelines.
+
+<span class="d">No professional roles yet — actively looking for a first internship.</span>`
+  },
+
+  "--education": {
+    desc: "Show education details",
+    out: `<span class="y">CEITI</span> <span class="d">— Chisinau, Moldova</span>
+   Information Technology — currently studying.
+
+<span class="c">Coursework:</span> OOP, Data Structures &amp; Algorithms, Databases,
+Design Patterns, Software Analysis &amp; Design, Desktop Programming (WPF)`
+  },
+
+  "--achievements": {
+    desc: "Show achievements and awards",
+    out: `<span class="c">Certifications</span>
+<span class="g">*</span> IT Specialist — Java
+<span class="g">*</span> IT Specialist — Databases
+<span class="g">*</span> IT Specialist — Networking
+
+<span class="c">Milestones</span>
+<span class="g">*</span> Shipped BibliotecaCEITI with a one-click installer and CI
+<span class="g">*</span> Opened my first open-source pull request on a public repo
+<span class="g">*</span> Built and documented 4+ backend projects from scratch`
+  },
+
+  "--contact": {
+    desc: "Display contact information",
+    out: `<span class="c">GitHub:</span>  <a href="https://github.com/Nicoleta-git" target="_blank" rel="noopener">github.com/Nicoleta-git</a>
+<span class="c">Email:</span>   <a href="mailto:nicoleta.titei07@gmail.com">nicoleta.titei07@gmail.com</a>
+
+<span class="d">Happy to talk about internships, junior backend roles,
+or anything Java.</span>`
+  },
+
+  "--status": {
+    desc: "Show system status",
+    out: `<span class="c">availability</span>    <span class="g">OPEN</span> — internships &amp; junior positions
+<span class="c">building</span>        TyreVault (Spring Boot) + its React front-end
+<span class="c">learning</span>        React, WPF, Java generics, design patterns
+<span class="c">based in</span>        Chisinau, Moldova`
+  }
+};
+
+/* ── Extra fun commands (optional, delete if you don't want them) ── */
+const EASTER = {
+  "whoami": () => `<span class="g">${USER}</span> — a backend developer who prefers the terminal.`,
+  "date":   () => new Date().toString(),
+  "sudo":   () => `<span class="r">${USER} is not in the sudoers file. This incident will be reported.</span>`,
+  "ls":     () => `<span class="c">projects/</span>  <span class="c">skills/</span>  <span class="c">contact/</span>  README.md`,
+  "pwd":    () => `/home/${USER}/portfolio`,
+  "exit":   () => `<span class="d">Nice try. There is no escape. Type</span> <span class="g">--help</span><span class="d">.</span>`
+};
+
+/* ─────────────── Terminal engine — you rarely need to touch this ─────────────── */
+const screen = document.getElementById('screen');
+const input  = document.getElementById('cmd');
+const caret  = document.getElementById('caret');
+const history = [];
+let hIndex = 0;
+
+/* the block caret stands in for an empty field; once there is real text
+   the native caret takes over, so show only one of them at a time */
+function syncCaret(){ caret.classList.toggle('hidden', input.value.length > 0); }
+input.addEventListener('input', syncCaret);
+
+function print(html = ''){
+  const line = document.createElement('div');
+  /* an empty div collapses to zero height, so blank spacer lines would
+     vanish — give them a hard space to keep the output breathing */
+  line.innerHTML = html === '' ? '&nbsp;' : html;
+  screen.appendChild(line);
+  screen.scrollTop = screen.scrollHeight;
+}
+
+function helpText(){
+  let s = `<span class="w">Available commands:</span>\n`;
+  const all = { "--help": {desc:"Show this help message"}, ...COMMANDS,
+                "clear": {desc:"Clear the terminal"} };
+  for (const [name, meta] of Object.entries(all)){
+    s += `  <span class="g">${name.padEnd(16)}</span><span class="d">${meta.desc}</span>\n`;
+  }
+  return s.trimEnd();
+}
+
+function run(raw){
+  print(`<span class="prompt">$</span> <span class="w">${escapeHtml(raw)}</span>`);
+  runBody(raw);
+}
+
+/* the part of run() that produces output — split out so a deep link can
+   type the prompt line itself and then reuse the dispatch below */
+function runBody(raw){
+  const cmd = raw.trim().toLowerCase();
+  if (!cmd) return;
+
+  history.push(raw); hIndex = history.length;
+
+  if (cmd === 'clear' || cmd === 'cls'){ screen.innerHTML = ''; return; }
+  if (cmd === '--help' || cmd === 'help' || cmd === '-h'){ print(helpText()); print(); return; }
+  if (COMMANDS[cmd]){ print(COMMANDS[cmd].out); print(); return; }
+  if (EASTER[cmd]){ print(EASTER[cmd]()); print(); return; }
+
+  print(`<span class="r">command not found: ${escapeHtml(cmd)}</span>`);
+  print(`<span class="d">Type</span> <span class="g">--help</span> <span class="d">to see available commands.</span>`);
+  print();
+}
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g, c => (
+    {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
+  ));
+}
+
+/* Boot screen. Deliberately short: it has to fit one window without
+   scrolling, and the command list is the thing visitors actually need. */
+async function boot(){
+  print(`<span class="g">Nicoleta Titei</span> <span class="d">— Java / Spring Boot developer · Chisinau, Moldova</span>`);
+  print();
+  print(helpText());
+  print();
+  await type(`<span class="w">This is a real terminal.</span> <span class="d">Type a command below and press Enter.</span>`);
+  print();
+
+  /* deep link: ?c=--projects runs that command on load, so the README
+     can hand off straight into a result instead of a blank prompt */
+  const deepLink = new URLSearchParams(location.search).get('c');
+  if (deepLink){
+    await sleep(250);
+    await type(`<span class="prompt">$</span> <span class="w">${escapeHtml(deepLink)}</span>`, 45);
+    runBody(deepLink);
+  }
+
+  input.focus();
+}
+
+function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+/* types a line out; HTML tags are inserted instantly, text char by char */
+async function type(html, speed = 18){
+  const line = document.createElement('div');
+  screen.appendChild(line);
+  let i = 0, buf = '';
+  while (i < html.length){
+    if (html[i] === '<'){
+      const end = html.indexOf('>', i);
+      buf += html.slice(i, end + 1);
+      i = end + 1;
+    } else {
+      buf += html[i++];
+      await sleep(speed);
+    }
+    line.innerHTML = buf;
+    screen.scrollTop = screen.scrollHeight;
+  }
+}
+
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter'){
+    run(input.value);
+    input.value = '';
+    syncCaret();
+  }
+  else if (e.key === 'ArrowUp'){
+    e.preventDefault();
+    if (hIndex > 0) input.value = history[--hIndex];
+  }
+  else if (e.key === 'ArrowDown'){
+    e.preventDefault();
+    if (hIndex < history.length - 1) input.value = history[++hIndex];
+    else { hIndex = history.length; input.value = ''; }
+  }
+  else if (e.key === 'Tab'){
+    e.preventDefault();
+    const partial = input.value.trim().toLowerCase();
+    if (!partial) return;
+    const names = ['--help','clear', ...Object.keys(COMMANDS)];
+    const match = names.find(n => n.startsWith(partial));
+    if (match) input.value = match;
+  }
+  syncCaret();
+});
+
+document.getElementById('window').addEventListener('click', () => input.focus());
+boot();
+</script>
+</body>
+</html>
